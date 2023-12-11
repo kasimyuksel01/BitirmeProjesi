@@ -23,6 +23,12 @@ export default function RegisterScreen() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.logoContainer}>
+        <Text style={styles.logoText}>YEDİR</Text>
+      </View>
+      <View style={styles.infoTextContainer}>
+        <Text style={styles.infoText}> Sadece bir adımda uygulamada neler olduğunu görebilirsin...</Text>
+      </View>
       <TextInput
         style={[styles.input, !name && styles.errorBorder]}
         placeholder="Ad"
@@ -55,6 +61,12 @@ export default function RegisterScreen() {
       >
         <Text style={styles.buttonText}>Kayıt Ol</Text>
       </TouchableOpacity>
+      <View style={styles.loginTextContainer}>
+        <Text style={styles.loginText}>Zaten bir hesabın var mı?</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.loginButton}>Giriş yap</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -65,6 +77,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
+    backgroundColor: 'green'
+  },
+  logoContainer: {
+    marginBottom: 150,
+  },
+  logoText: {
+    fontSize: 44,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+  },
+  infoTextContainer: {
+    justifyContent: 'center',
+    textAlign: 'center',
+    marginBottom: 50
+  },
+  infoText: {
+    fontSize: 22,
+    color: '#FFFFFF'
+    
   },
   input: {
     width: '100%',
@@ -73,18 +104,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingLeft: 10,
     marginBottom: 10,
-  },
-  datePickerButton: {
-    width: '100%',
-    height: 40,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  datePickerText: {
-    color: '#000000',
   },
   registerButton: {
     width: '100%',
@@ -106,4 +125,19 @@ const styles = StyleSheet.create({
   disabledButton: {
     backgroundColor: '#CCCCCC',
   },
+  loginTextContainer: {
+    flexDirection: 'row',
+    marginTop: 10,
+  },
+  loginText: {
+    marginRight: 5,
+    fontSize: 12,
+    color: '#FFFFFF'
+  },
+  loginButton: {
+    textDecorationLine: 'underline',
+    color: '#FFFFFF',
+    fontSize: 12
+  },
 });
+

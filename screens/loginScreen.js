@@ -12,6 +12,7 @@ const LoginScreen = () => {
     // Giriş işlemleri burada gerçekleştirilebilir
     console.log('Email:', email);
     console.log('Password:', password);
+    navigation.navigate('HomePage')
     // Örneğin, burada bir API çağrısı yapabilir ve kullanıcıyı doğrulayabilirsiniz
   };
 
@@ -56,10 +57,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 0, 0.5)', // Sarıya yakın bir ton
+    backgroundColor: 'green'
   },
   logoContainer: {
-    marginBottom: 30,
+    marginBottom: 150,
   },
   logoText: {
     fontSize: 32,
