@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 const LoginScreen = () => {
@@ -23,32 +24,37 @@ const LoginScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Text style={styles.logoText}>YEDİR</Text>
+    <LinearGradient colors={['#008000', '#ffd700']} style={styles.container}>
+      <View style={styles.container}>
+        <View style={styles.logoContainer}>
+          <Text style={styles.logoText}>yedir</Text>
+        </View>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="E-posta"
+            onChangeText={(text) => setEmail(text.toLowerCase())}
+            value={email}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Şifre"
+            onChangeText={(text) => setPassword(text)}
+            value={password}
+            secureTextEntry
+          />
+        </View>
+        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Giriş Yap</Text>
+        </TouchableOpacity>
+        <View style={styles.registerTextContainer}>
+          <Text style={styles.registerText}>Hesabınız yok mu? </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+            <Text style={styles.registerButton}>Kayıt Ol</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="E-posta"
-          onChangeText={(text) => setEmail(text.toLowerCase())}
-          value={email}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Şifre"
-          onChangeText={(text) => setPassword(text)}
-          value={password}
-          secureTextEntry
-        />
-      </View>
-      <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Giriş Yap</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.signupButton} onPress={handleSignUp}>
-        <Text style={styles.buttonText}>Kayıt Ol</Text>
-      </TouchableOpacity>
-    </View>
+    </LinearGradient>
   );
 };
 
@@ -57,15 +63,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'green'
   },
   logoContainer: {
-    marginBottom: 150,
+    marginBottom: 200,
   },
   logoText: {
-    fontSize: 32,
+    fontSize: 48,
     fontWeight: 'bold',
-    color: '#FFFFFF',
+    color: '#a5d64b',
   },
   inputContainer: {
     marginBottom: 20,
@@ -74,26 +79,32 @@ const styles = StyleSheet.create({
     width: 300,
     height: 40,
     backgroundColor: '#FFFFFF',
-    borderRadius: 5,
+    borderRadius: 15,
     paddingLeft: 10,
     marginBottom: 10,
   },
   loginButton: {
     width: 300,
     height: 40,
-    backgroundColor: '#2979FF',
+    backgroundColor: '#9fd84a',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
     marginBottom: 10,
   },
-  signupButton: {
-    width: 300,
-    height: 40,
-    backgroundColor: '#FF6F00',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 5,
+  registerTextContainer: {
+    flexDirection: 'row',
+    marginTop: 16,
+  },
+  registerText: {
+    marginRight: 5,
+    fontSize: 16,
+    color: '#FFFFFF'
+  },
+  registerButton: {
+    textDecorationLine: 'underline',
+    color: '#FFFFFF',
+    fontSize: 16
   },
   buttonText: {
     color: '#FFFFFF',
